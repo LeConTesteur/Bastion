@@ -1,0 +1,33 @@
+---
+internal_ip_eth1: 1.1.1.254
+internal_ip_eth1_0: 1.1.1.253
+public_port_rules:
+  - name: http
+    port: 10000
+    target_ip: 1.1.1.9
+    target_port: 80
+  - name: https
+    port: 11000
+    target_ip: 1.1.1.9
+    target_port: 443
+internal_service_port_rules:
+  - name: windows active direcory 2019 - No SSL
+    port: 5000
+    target_ip: Y.Y.Y.Y
+    target_port: 389
+  - name: windows active direcory 2019 - With SSL
+    port: 5001
+    target_ip: Y.Y.Y.Y
+    target_port: 636
+  - name: Cisco EST Server
+    port: 5002
+    target_ip: Y.Y.Y.Y
+    target_port: 8443
+internal_service_ip_rules:
+  - name: name.fr
+    ip: Y.Y.Y.Y
+    target_ip: X.X.X.X
+    ports:
+      - 80
+      - 443
+
