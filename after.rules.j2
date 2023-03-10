@@ -1,0 +1,23 @@
+### Change IP for external resources ###
+*nat
+:PREROUTING - [0:0]
+:POSTROUTING - [0:0]
+
+{%for rule in public_port_rules%}
+-A PREROUTING -p tcp --destination {{host_ip}} --destination-port {{rule.port}} -j DNAT --to-destination {{rule.target_ip}}:{{rule.target_port}}
+-A POSTROUTING -p tcp --destination {{rule.target_ip}} --destination-port {{rule.target_port}} -j MASQUERADE
+{%endfor%}
+
+
+{%for rule in internal_service_port_rules%}
+-A PREROUTING -p tcp --destination {{internal_ip_eth1}} --destination-port {{rule.port}} -j DNAT --to-destination {{rule.target_ip}}:{{rule.target_port}}
+-A POSTROUTING -p tcp --destination {{rule.target_ip}} --destination-port {{rule.target_port}} -j MASQUERADE
+{%endfor%}
+
+{%for rule in internal_service_ip_rules%}
+-A PREROUTING -p tcp --destination {{rule.ip}} -j DNAT --to-destination {{rule.target_ip}}
+-A POSTROUTING -p tcp --destination {{rule.target_ip}} -j MASQUERADE
+{%endfor%}
+
+### END Change IP for external resources ###
+COMMIT
