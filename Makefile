@@ -21,7 +21,7 @@ output/%.box: %.pkr.hcl | output
 	packer build -var 'iso_url=$(word 2,$^)' -var 'output_dir=$(@D)' -var 'vm_name=$(@F)' $<
 
 output/bastion_no_provision.box: tmp/$(DEBIAN_ISO)
-output/bastion.box: tmp/bastion_no_provision.qcow2 
+output/bastion.box: tmp/bastion_no_provision.qcow2 playbook.yml vars_playbook.yml
 
 tmp/bastion_no_provision.qcow2: output/bastion_no_provision.box | tmp
 	tar -xvzf $< box_0.img -O > $@

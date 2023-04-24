@@ -1,7 +1,7 @@
 ---
-internal_ip_eth1: 1.1.1.254
+bastion_internal_ip_eth1: 1.1.1.254
 internal_ip_eth1_0: 1.1.1.253
-public_port_rules:
+bastion_public_port_rules:
   - name: http
     port: 10000
     target_ip: 1.1.1.9
@@ -10,7 +10,7 @@ public_port_rules:
     port: 11000
     target_ip: 1.1.1.9
     target_port: 443
-internal_service_port_rules:
+bastion_internal_service_port_rules:
   - name: windows active direcory 2019 - No SSL
     port: 5000
     target_ip: Y.Y.Y.Y
@@ -23,10 +23,10 @@ internal_service_port_rules:
     port: 5002
     target_ip: Y.Y.Y.Y
     target_port: 8443
-internal_service_ip_rules:
+bastion_internal_service_ip_rules:
   - name: name.fr
     ip: Y.Y.Y.Y
-    target_ip: X.X.X.X
+    target_ip: 1.1.1.9
     ports:
       - 80
       - 443
