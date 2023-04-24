@@ -31,11 +31,11 @@
          - iputils-arping
          - ufw
          - ssh
-    - name: Force use ethX ethernet format
+    - name: Force use ethX ethernet format and FR language
       ansible.builtin.lineinfile:
         path: /etc/default/grub
-        regexp: '^GRUB_CMDLINE_LINUX='
-        line: 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"'
+        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 biosdevname=0 keymap=fr(latin9) locale=fr_FR"'
       notify:
         - Regen GRUB
     - name: Set network
