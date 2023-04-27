@@ -1,6 +1,6 @@
 ---
-bastion_internal_ip_eth1: 1.1.1.254
-internal_ip_eth1_0: 1.1.1.253
+bastion_internal_ip_eth1: "1.1.1.254"
+bastion_internal_ip_eth1_0: "1.1.1.253"
 bastion_public_port_rules:
   - name: http
     port: 10000
