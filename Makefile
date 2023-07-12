@@ -6,7 +6,7 @@ NAME:=bastion
 
 WORK_DIRS:=output tmp
 
-.PHONY: build clean
+.PHONY: build clean bastion
 
 $(WORK_DIRS):
 	mkdir -p $@
@@ -27,3 +27,4 @@ tmp/bastion_no_provision.qcow2: output/bastion_no_provision.box | tmp
 	tar -xvzf $< box_0.img -O > $@
 
 build: output/bastion.box
+bastion: build
